@@ -1,0 +1,535 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   GLOBAL THEME
+======================================== */
+
+:root {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --neon-blue: #00e5ff;
+  --neon-bright: #00bfff;
+  --neon-purple: #637bff;
+  --neon-glow: rgba(0, 229, 255, 0.4);
+  --neon-border: rgba(0, 229, 255, 0.25);
+
+  --background-dark: #070b12;
+  --surface-dark: #0d1421;
+  --surface-hover: #111e30;
+  --text-primary: #f1f7ff;
+  --text-secondary: #a5b4c7;
+
+  --background-light: #f7fbff;
+  --surface-light: #ffffff;
+  --text-light: #172033;
+  --text-secondary-light: #475569;
+}
+
+/* ========================================
+   BASE
+======================================== */
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--neon-blue) var(--background-dark);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================
+   DARK THEME
+======================================== */
+
+html.dark,
+.dark body {
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+}
+
+.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(0, 183, 255, 0.07),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 85% 65%,
+      rgba(0, 229, 255, 0.045),
+      transparent 42%
+    );
+}
+
+/* ========================================
+   LIGHT THEME
+======================================== */
+
+html:not(.dark),
+html:not(.dark) body {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+/* ========================================
+   NEON BLUE COLOR OVERRIDES
+======================================== */
+
+.text-blue-300,
+.text-blue-400,
+.text-blue-500,
+.text-blue-600,
+.text-indigo-300,
+.text-indigo-400,
+.text-indigo-500,
+.text-indigo-600,
+.text-cyan-300,
+.text-cyan-400,
+.text-cyan-500 {
+  color: var(--neon-blue) !important;
+}
+
+.bg-blue-400,
+.bg-blue-500,
+.bg-blue-600,
+.bg-indigo-400,
+.bg-indigo-500,
+.bg-indigo-600 {
+  background-color: var(--neon-bright) !important;
+}
+
+.border-blue-300,
+.border-blue-400,
+.border-blue-500,
+.border-blue-600,
+.border-indigo-400,
+.border-indigo-500,
+.border-indigo-600 {
+  border-color: var(--neon-blue) !important;
+}
+
+.ring-blue-400,
+.ring-blue-500,
+.ring-indigo-500 {
+  --tw-ring-color: var(--neon-blue) !important;
+}
+
+/* ========================================
+   LINKS & NAVIGATION
+======================================== */
+
+a {
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.dark nav a[aria-current="page"],
+.dark nav a.active,
+.dark nav a[aria-current="page"] *,
+.dark nav a.active * {
+  color: var(--neon-blue) !important;
+}
+
+.dark nav a:hover {
+  color: var(--neon-blue);
+}
+
+/* ========================================
+   PRIMARY CTA BUTTONS
+======================================== */
+
+a[class*="bg-blue-"],
+button[class*="bg-blue-"],
+a[class*="bg-indigo-"],
+button[class*="bg-indigo-"] {
+  background-color: var(--neon-bright) !important;
+  border-color: var(--neon-blue) !important;
+  color: #041018 !important;
+}
+
+a[class*="bg-blue-"]:hover,
+button[class*="bg-blue-"]:hover,
+a[class*="bg-indigo-"]:hover,
+button[class*="bg-indigo-"]:hover {
+  background-color: var(--neon-blue) !important;
+  box-shadow: 0 0 24px var(--neon-glow);
+}
+
+/* ========================================
+   SVG ICONS & ILLUSTRATIONS
+======================================== */
+
+svg [stroke="#3563ff"],
+svg [stroke="#3563FF"],
+svg [stroke="#3b82f6"],
+svg [stroke="#3B82F6"],
+svg [stroke="#2563eb"],
+svg [stroke="#2563EB"] {
+  stroke: var(--neon-blue) !important;
+}
+
+svg [fill="#3563ff"],
+svg [fill="#3563FF"],
+svg [fill="#3b82f6"],
+svg [fill="#3B82F6"] {
+  fill: var(--neon-blue) !important;
+}
+
+/* ========================================
+   SELECTION
+======================================== */
+
+::selection {
+  background: rgba(0, 229, 255, 0.35);
+  color: inherit;
+}
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.45);
+  border: 2px solid var(--background-dark);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-blue);
+  box-shadow: 0 0 12px var(--neon-glow);
+}
+
+/* ========================================
+   FOCUS
+======================================== */
+
+*:focus-visible {
+  outline: 2px solid var(--neon-blue) !important;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ========================================
+   NEON TEXT UTILITIES
+======================================== */
+
+.neon-text {
+  color: var(--neon-blue);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.25);
+}
+
+.neon-gradient {
+  background: linear-gradient(
+    90deg,
+    #00e5ff 0%,
+    #00aaff 50%,
+    #7185ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.neon-heading {
+  color: var(--neon-blue);
+  text-shadow:
+    0 0 10px rgba(0, 229, 255, 0.25),
+    0 0 28px rgba(0, 229, 255, 0.12);
+}
+
+/* ========================================
+   NEON BUTTONS
+======================================== */
+
+.neon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  color: #031018;
+  background: var(--neon-blue);
+  border: 1px solid var(--neon-blue);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.neon-button:hover {
+  background: #70f1ff;
+  box-shadow:
+    0 0 12px rgba(0, 229, 255, 0.35),
+    0 0 28px rgba(0, 229, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.neon-button:active {
+  transform: translateY(0);
+}
+
+.neon-button-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  color: var(--neon-blue);
+  background: transparent;
+  border: 1px solid var(--neon-border);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.neon-button-outline:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.12);
+}
+
+/* ========================================
+   NEON CARDS
+======================================== */
+
+.neon-card {
+  background: rgba(13, 20, 33, 0.85);
+  border: 1px solid var(--neon-border);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.neon-card:hover {
+  border-color: rgba(0, 229, 255, 0.65);
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.neon-border {
+  border: 1px solid var(--neon-border);
+}
+
+.neon-box {
+  border: 1px solid var(--neon-border);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.neon-box:hover {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.15);
+}
+
+.neon-divider {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-blue),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+/* ========================================
+   NAVIGATION UTILITIES
+======================================== */
+
+.neon-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.neon-link:hover {
+  color: var(--neon-blue);
+  text-shadow: 0 0 12px var(--neon-glow);
+}
+
+/* ========================================
+   SKILL TAGS
+======================================== */
+
+.neon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  color: var(--neon-blue);
+  background: rgba(0, 229, 255, 0.07);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  transition: all 0.25s ease;
+}
+
+.neon-badge:hover {
+  background: rgba(0, 229, 255, 0.14);
+  border-color: var(--neon-blue);
+}
+
+/* ========================================
+   INPUTS & FORMS
+======================================== */
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  color: var(--text-primary);
+  background-color: var(--surface-dark);
+  border-color: var(--neon-border);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #8291a5;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08);
+}
+
+/* ========================================
+   REVEAL ANIMATIONS — VISIBILITY FIX
+======================================== */
+
+/*
+  Keep content visible even if the IntersectionObserver
+  or reveal script does not add the "visible" class.
+  This prevents sections from disappearing.
+*/
+
+.reveal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal.visible {
+    animation: reveal-in 0.7s ease-out both;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0.65;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   TEXT UTILITIES
+======================================== */
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ========================================
+   TERMINAL
+======================================== */
+
+.terminal-output::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.3);
+  border-radius: 6px;
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   PRINT
+======================================== */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-page {
+    display: block !important;
+  }
+
+  body,
+  .dark body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .neon-text,
+  .neon-heading {
+    color: black !important;
+    text-shadow: none !important;
+  }
+}

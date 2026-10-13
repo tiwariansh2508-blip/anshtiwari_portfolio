@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#11141a"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#262b32" stroke-width="1"/>
+  <text x="80" y="200" font-family="Georgia, serif" font-size="56" font-weight="700" fill="#e9ebed">Ansh Manendra Tiwari</text>
+  <text x="80" y="270" font-family="Inter, sans-serif" font-size="28" fill="#828a96">Software Engineer | Java &amp; Spring Boot Developer</text>
+  <rect x="80" y="320" width="320" height="4" fill="#3563ff"/>
+  <text x="80" y="380" font-family="Inter, sans-serif" font-size="20" fill="#aeb4bc">Building Reliable Software, One System at a Time</text>
+  <text x="80" y="500" font-family="JetBrains Mono, monospace" font-size="16" fill="#4d545f">Java · Spring Boot · React · PostgreSQL · REST APIs</text>
+</svg>
